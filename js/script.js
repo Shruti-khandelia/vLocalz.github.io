@@ -16,7 +16,7 @@ function secondsToMinutesSeconds(seconds) {
 }
 async function getSongs(folder) {
     currFolder = folder;
-    let a = await fetch(`/songs/${folder}/`)
+    let a = await fetch(`${folder}/info.json`);
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -89,7 +89,7 @@ async function displayAlbums() {
                             </svg>
 
                         </div>
-                        <img src="songs/${encodeURIComponent(folder)}/cover.jpg" alt="" >
+                        <img src="${folder}/cover.jpg" alt="Album Cover">
                         <h2>${response.title}</h2>
                         <p>${response.description}</p>
                     </div>`
