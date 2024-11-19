@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/icon.svg" type="image/svg+xml">
+    <title>vLocalz</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/utility.css">
+</head>
+
+<body>
+    <div class="container flex bg-black">
+
+        <!-- DIVIDING APP INTO LEFT AND RIGHT -->
+        <div class="left">
+            <div class="close">
+                <img width="30" class="invert" src="images/close.svg" alt="">
+            </div>
+            <!-- LEFT IS PART DIVIDED INTO HOME AND LIBRARY -->
+            <div class="home bg-grey rounded m-1 p-1">
+                <div class="logo"><img width="100 0" src="images/logo.svg" alt="Logo">
+                    <div class="name">
+                        <h1 style="font-size: 40px;">vLocalz </h1>
+                    </div>
+                </div>
+                <ul>
+                    <li><img class="invert" src="images/home.svg" alt="Home">Home</li>
+                    
+                    <li id="searchButton"><img class="invert" src="images/search.svg" alt="Search">Search</li>
+                    <li id="searchInputContainer" style="display: none;">
+                        <input type="text" id="searchInput" placeholder="Search songs..." oninput="searchSongs()">
+                    </li>
+                </ul>
+            </div>
+
+            <div class="library bg-grey rounded m-1 p-1">
+                <div class="heading">
+                    <img class="invert" src="images/playlist.svg" alt="Playlist">
+                    <h2>Your Library</h2>
+                </div>
+                <div class="songList">
+                    <ul>
+
+                    </ul>
+                </div>
+                <div class="footer">
+                    <div><a href="#"><span>Legal</span></a></div>
+                    <div><a href="#"><span>Privacy Center</span></a></div>
+                    <div><a href="#"><span>Privacy Policy</span></a>
+                    </div>
+                    <div><a href="#"><span>Cookies</span></a></div>
+                    <div><a href="#"><span>About Ads</span></a></div>
+                    <div><a href="#"><span>Accessibility</span></a></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="right bg-grey rounded">
+            <div class="header">
+                <div class="nav">
+                    <div class="hamburgerContainer">
+                        <img width="40" height="40" class="invert hamburger" src="images/hamburger.svg" alt="">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15 6L9.70711 11.2929C9.37377 11.6262 9.20711 11.7929 9.20711 12C9.20711 12.2071 9.37377 12.3738 9.70711 12.7071L15 18"
+                                stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M9 18L14.2929 12.7071C14.6262 12.3738 14.7929 12.2071 14.7929 12C14.7929 11.7929 14.6262 11.6262 14.2929 11.2929L9 6"
+                                stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <div class="detail">
+                            <h1>vLocalz- "Music beyond mainstream"</h1>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="buttons">
+                    <button class="signupbtn ">Sign in</button>
+                    <button class="loginbtn">Log in</button>
+                </div>
+            </div>
+            <div class="spotifyPlaylists">
+                <h1>Playlists</h1>
+                <div class="cardContainer">
+                </div>
+                <div class="playbar">
+                    <div class="seekbar">
+                        <div class="circle">
+
+                        </div>
+                    </div>
+                    <div class="abovebar">
+                        <div class="songinfo"></div>
+                        <div class="songbuttons">
+                            <img width="35" id="previous" src="images/prevsong.svg" alt="">
+                            <img width="35" id="play" src="images/play.svg" alt="">
+                            <img width="35" id="next" src="images/nextsong.svg" alt="">
+                        </div>
+                        <div class="timevol">
+                            <div class="songtime">
+                            </div>
+                            <div class="volume">
+                                <img width="35" src="images/volume.svg" alt="">
+                                <div class="range">
+                                    <input type="range" name="volume" id="">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Popup Modal for Login and Sign In -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            
+            <!-- Login Form -->
+            <form id="loginForm" style="display: block;">
+                <h2 style="text-align: center; margin-bottom: 20px;">Login</h2>
+                <label for="loginEmailPhone">Enter your email id or phone number:</label>
+                <input type="text" id="loginEmailPhone" name="emailPhone" required>
+    
+                <label for="loginPassword">Enter your password:</label>
+                <input type="password" id="loginPassword" name="password" required>
+    
+                <div class="form-options">
+                    <a href="#">Forgot Password?</a>
+                </div>
+    
+                <button type="submit">Login</button>
+    
+                <div class="form-footer">
+                    <p>New user? <a href="#" onclick="toggleForms('signup')">Sign in</a></p>
+                </div>
+            </form>
+            
+            <!-- Signup Form -->
+            <form id="signupForm" style="display: none;">
+                <h2 style="text-align: center; margin-bottom: 20px;">Sign in</h2>
+                <label for="signupEmailPhone">Enter your email id or phone number:</label>
+                <input type="text" id="signupEmailPhone" name="emailPhone" required>
+    
+                <label for="signupPassword">Create a password:</label>
+                <input type="password" id="signupPassword" name="password" required>
+    
+                <button type="submit">Sign Up</button>
+    
+                <div class="form-footer">
+                    <p>Already a user? <a href="#" onclick="toggleForms('login')">Log In</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    
+
+    <script src="js/script.js"></script>
+
+</body>
+
+
+</html>
